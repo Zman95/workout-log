@@ -7,7 +7,7 @@ like _"what muscle group have I been skipping?"_ or _"suggest a workout for toda
 
 Built for Internship Assignment 2.
 
-**Live site:** _(add your Vercel URL here after deploying)_
+**Live site:** https://workout-log-wine-kappa.vercel.app/
 
 ---
 
