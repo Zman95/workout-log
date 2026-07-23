@@ -9,10 +9,8 @@ import WorkoutFields from "@/app/WorkoutFields";
 type FormState = { error?: string };
 
 export default function NewWorkoutForm() {
-  // useActionState wires the form to the server action and gives us:
-  //  - state: what the action returned last (an error message, if any)
-  //  - formAction: what we hand to <form action={...}>
-  //  - isPending: true while saving (our loading state)
+  // useActionState gives us: last returned state (error), the formAction to
+  // attach to <form>, and isPending (true while saving = our loading state).
   const [state, formAction, isPending] = useActionState<FormState, FormData>(
     createWorkout,
     {}
@@ -21,7 +19,7 @@ export default function NewWorkoutForm() {
   return (
     <form action={formAction} className="mt-8 space-y-5">
       {state.error && (
-        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <div className="rounded-lg border border-red-900 bg-red-950/50 px-4 py-3 text-sm text-red-300">
           {state.error}
         </div>
       )}
@@ -31,7 +29,7 @@ export default function NewWorkoutForm() {
       <button
         type="submit"
         disabled={isPending}
-        className="rounded-full bg-indigo-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-indigo-700 disabled:cursor-not-allowed disabled:bg-slate-300"
+        className="rounded-full bg-lime-400 px-6 py-3 text-sm font-semibold text-slate-950 transition-colors hover:bg-lime-300 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400"
       >
         {isPending ? "Saving…" : "Save workout"}
       </button>
