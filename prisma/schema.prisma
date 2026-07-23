@@ -1,0 +1,33 @@
+// This is your Prisma schema — the single place where you describe the SHAPE of
+// your data. Prisma reads this file and (1) creates matching tables in your
+// Postgres database and (2) generates type-safe code so you can write
+// db.workout.create(...) instead of raw SQL.
+
+// The "generator" tells Prisma to generate the client code (the functions you
+// call from your app) into src/generated/prisma.
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+// The "datasource" says which kind of database you're using. The actual
+// connection string (DATABASE_URL) lives in .env and is wired up in
+// prisma.config.ts — never hard-coded here.
+datasource db {
+  provider = "postgresql"
+}
+
+// A "model" is one type of thing your app stores. This becomes a table called
+// "Workout" in the database, and each field below becomes a column.
+model Workout {
+  id          Int      @id @default(autoincrement()) // unique number per row: 1, 2, 3... (@id = primary key)
+  exercise    String // e.g. "Bench Press"
+  muscleGroup String // e.g. "Chest", "Legs"
+  sets        Int // number of sets (a non-string type)
+  reps        Int // reps per set
+  weight      Float? // weight in lbs — the "?" means optional (bodyweight moves have none)
+  date        DateTime @default(now()) // the day of the workout (defaults to now if not set)
+  notes       String? // optional free-text notes
+  createdAt   DateTime @default(now()) // timestamp: when the row was created
+  updatedAt   DateTime @updatedAt // timestamp: auto-updates whenever the row changes
+}
