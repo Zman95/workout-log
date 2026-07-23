@@ -1,6 +1,6 @@
 // Shared form fields used by BOTH the "new" and "edit" forms, so the input
-// markup lives in one place. It accepts optional `defaults` to pre-fill the
-// boxes (the edit form passes the existing workout; the new form passes none).
+// markup lives in one place. `defaults` pre-fills the boxes (edit passes the
+// existing workout; new passes none).
 type Defaults = {
   exercise?: string;
   muscleGroup?: string;
@@ -104,7 +104,7 @@ export default function WorkoutFields({ defaults }: { defaults?: Defaults }) {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-sm font-medium text-slate-700">
+      <span className="mb-1.5 block text-sm font-medium text-slate-300">
         {label}
       </span>
       {children}
@@ -113,4 +113,4 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 }
 
 const inputClass =
-  "w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 shadow-sm outline-none transition-colors focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200";
+  "w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-white placeholder-slate-500 outline-none transition-colors focus:border-lime-400 focus:ring-2 focus:ring-lime-400/30";

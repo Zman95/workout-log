@@ -1,5 +1,5 @@
-// "use client" — the edit form. Same idea as the new form, but it (1) pre-fills
-// the fields with the existing workout and (2) calls updateWorkout instead.
+// "use client" — the edit form. Pre-fills the fields with the existing workout
+// and calls updateWorkout on submit.
 "use client";
 
 import { useActionState } from "react";
@@ -19,9 +19,7 @@ type WorkoutData = {
 };
 
 export default function EditWorkoutForm({ workout }: { workout: WorkoutData }) {
-  // .bind(null, workout.id) "locks in" the id as the first argument, so the
-  // server action knows WHICH workout to update. The form still supplies the
-  // rest (prevState, formData).
+  // .bind(null, workout.id) locks in which workout to update.
   const action = updateWorkout.bind(null, workout.id);
   const [state, formAction, isPending] = useActionState<FormState, FormData>(
     action,
@@ -31,7 +29,7 @@ export default function EditWorkoutForm({ workout }: { workout: WorkoutData }) {
   return (
     <form action={formAction} className="mt-8 space-y-5">
       {state.error && (
-        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <div className="rounded-lg border border-red-900 bg-red-950/50 px-4 py-3 text-sm text-red-300">
           {state.error}
         </div>
       )}
@@ -41,7 +39,7 @@ export default function EditWorkoutForm({ workout }: { workout: WorkoutData }) {
       <button
         type="submit"
         disabled={isPending}
-        className="rounded-full bg-indigo-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-indigo-700 disabled:cursor-not-allowed disabled:bg-slate-300"
+        className="rounded-full bg-lime-400 px-6 py-3 text-sm font-semibold text-slate-950 transition-colors hover:bg-lime-300 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400"
       >
         {isPending ? "Saving…" : "Save changes"}
       </button>
