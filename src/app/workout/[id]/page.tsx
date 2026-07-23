@@ -6,6 +6,8 @@ import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
 import { deleteWorkout } from "@/app/actions";
 
+export const dynamic = "force-dynamic";
+
 export default async function WorkoutDetailPage({
   params,
 }: {

@@ -3,6 +3,10 @@
 import Link from "next/link";
 import { db } from "@/lib/db";
 
+// Render on every request (never cached at build) so newly added workouts
+// always show up immediately.
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   // READ: fetch every workout from the database, newest first.
   const workouts = await db.workout.findMany({ orderBy: { date: "desc" } });

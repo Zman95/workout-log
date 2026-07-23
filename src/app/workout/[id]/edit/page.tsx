@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
 import EditWorkoutForm from "./EditWorkoutForm";
 
+export const dynamic = "force-dynamic";
+
 export default async function EditWorkoutPage({
   params,
 }: {
